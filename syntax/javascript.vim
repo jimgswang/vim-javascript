@@ -221,6 +221,9 @@ syntax region  jsCommentIfElse      contained start=/\/\*/ end=/\*\// contains=j
 syntax region  jsCommentRepeat      contained start=/\/\// end=/$/    contains=jsCommentTodo,@Spell skipwhite skipempty nextgroup=jsRepeatBlock extend keepend
 syntax region  jsCommentRepeat      contained start=/\/\*/ end=/\*\// contains=jsCommentTodo,@Spell skipwhite skipempty nextgroup=jsRepeatBlock fold extend keepend
 
+
+syntax match   jsConstant       /\<\u[A-Z0-9_]\+\>/ display
+
 " Decorators
 syntax match   jsDecorator                    /^\s*@/ nextgroup=jsDecoratorFunction
 syntax match   jsDecoratorFunction  contained /[a-zA-Z_][a-zA-Z0-9_.]*/ nextgroup=jsParenDecorator
@@ -377,6 +380,11 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsHtmlElemFuncs        PreProc
 
   HiLink jsCssStyles            Label
+
+
+  HiLink jsVariableDef          Identifier
+  HiLink jsFuncArgs             Special
+  HiLink jsConstant             Constant
 
   delcommand HiLink
 endif
